@@ -6,31 +6,50 @@
     <title></title>
 </head>
 <body>
+    <div id="result"></div>
     <script>
         // Проверки
         // Перевоз 1000т груза с планеты B на планету A.
+        var elem = document.getElementById( 'result' );
 
         var vessel = new Vessel('Яндекс', [0,0], 1000);
         var planetA = new Planet('A', [0,0], 0);
         var planetB = new Planet('B', [100, 100], 5000);
-        // alert(planetA.name);
 
         // Проверка текущего состояния
-        alert(vessel.report()); // Корабль "Яндекс". Местоположение: 0,0. Занято: 0 из 1000т.
+        elem.innerHTML += vessel.report() + '<br>';
+        elem.innerHTML += planetA.report() + '<br>';
+        elem.innerHTML += planetB.report() + '<br><br>';
+        vessel.flyTo(planetB.position);
+        planetB.loadCargoTo(vessel, 1000);
+        elem.innerHTML += '   ---vessel.flyTo(planetB);---   ' + '<br>';
+        elem.innerHTML += '   ---planetB.loadCargoTo(vessel, 1000)---   ' + '<br><br>';
+        elem.innerHTML += vessel.report() + '<br><br>';
+
+        vessel.flyTo(planetA);
+        planetB.unloadCargoFrom(vessel, 1000)
+        elem.innerHTML += '---vessel.flyTo(planetA);---' + '<br>';
+        elem.innerHTML += '---planetB.unloadCargoFrom(vessel, 1000);---' + '<br><br>';
+        elem.innerHTML += vessel.report() + '<br>';
+        elem.innerHTML += planetA.report() + '<br>';
+        elem.innerHTML += planetB.report() + '<br>';
+
+
+       /* alert(vessel.report()); // Корабль "Яндекс". Местоположение: 0,0. Занято: 0 из 1000т.
 
         alert(planetA.report()); // Планета "A". Местоположене: 0,0. Грузов нет.
         alert(planetB.report()); // Планета "B". Местоположене: 100,100. Доступно груза: 5000т.
 
         vessel.flyTo(planetB);
         planetB.loadCargoTo(vessel, 1000);
-        //alert(vessel.report()); // Корабль "Яндекс". Местоположение: 100,100. Занято: 1000 из 1000т.
+        alert(vessel.report()); // Корабль "Яндекс". Местоположение: 100,100. Занято: 1000 из 1000т.
 
         vessel.flyTo(planetA);
         planetA.unloadCargoFrom(vessel, 500);
-        //alert(vessel.report()); // Корабль "Яндекс". Местоположение: 0,0. Занято: 500 из 1000т.
+        alert(vessel.report()); // Корабль "Яндекс". Местоположение: 0,0. Занято: 500 из 1000т.
         alert(planetA.report()); // Планета "A". Местоположение: 0,0. Доступно груза: 500т.
         alert(planetB.report()); // Планета "B". Местоположение: 100,100. Доступно груза: 4000т.
-
+*/
     </script>
 
 </body>

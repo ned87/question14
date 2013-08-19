@@ -85,7 +85,7 @@ function Planet(name, position, availableAmountOfCargo) {
  */
 
 Planet.prototype.report = function () {
-    return 'Планета "'+this.name + '". Местоположение: ' + this.position.toString() + ' ' +  (this.availableAmountOfCargo == 0 ? 'Грузов нет. ' : 'Доступно грузов: ' + this.getAvailableAmountOfCargo() + 'т.');
+    return 'Планета "'+this.name + '". Местоположение: ' + this.position.toString() + '. ' +  (this.availableAmountOfCargo == 0 ? 'Грузов нет. ' : 'Доступно грузов: ' + this.getAvailableAmountOfCargo() + ' т.');
 }
 
 /**
